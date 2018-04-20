@@ -13,5 +13,6 @@ public class Main {
         FileFinder fileFinder = new FileFinder(args);
         fileFinder.scanDir(args[0]);
         fileFinder.info();
+        // Change for test commit
     }
 }

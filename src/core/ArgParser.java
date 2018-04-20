@@ -11,7 +11,7 @@ class ArgParser {
 
     public ArgParser() {
         flags = new ArrayList<String>();
-        isReady = false;
+        isReady = false;//
     }
 
     public ArgParser(String[] args) {
