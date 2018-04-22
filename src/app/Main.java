@@ -1,6 +1,6 @@
 package app;
 
-import core.FileFinder;
+import core.FileScanner;
 
 import java.io.IOException;
 
@@ -10,9 +10,8 @@ public class Main {
             System.out.println("Usage: filefinder startpath");
             System.exit(-1);
         }
-        FileFinder fileFinder = new FileFinder(args);
-        fileFinder.scanDir(args[0]);
-        fileFinder.info();
-        // Change for test commit
+        FileScanner fileScanner = new FileScanner(args);
+        fileScanner.scanDir(args[0]);
+        fileScanner.getInfo();
     }
 }

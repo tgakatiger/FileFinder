@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.*;
 
 
-public class FileFinder {
+public class FileScanner {
     private boolean SHOW_FINDINGS;
     private boolean SHOW_INFO;
     private boolean SHOW_ERRORS;
@@ -22,17 +22,17 @@ public class FileFinder {
     private ArrayList<String> findingList;
     private ArrayList<String> infoList;
     private long byteTotal;
-    private ArgParser argParser;
+    private FlagParser flagParser;
 
 
-    public FileFinder() {
+    public FileScanner() {
         count = 0;
         level = 0;
         max_level = 0;
         errors = 0;
         s_time = System.currentTimeMillis();
         byteTotal = 0;
-        argParser = new ArgParser();
+        flagParser = new FlagParser();
         s_time = System.currentTimeMillis();
         errorsList = new ArrayList<>();
         findingList = new ArrayList<>();
@@ -40,13 +40,13 @@ public class FileFinder {
         byteTotal = 0;
         SHOW_ERRORS = true;
         SHOW_FINDINGS = false;
-        SHOW_INFO = argParser.parse("--info");
+        SHOW_INFO = flagParser.parse("--getInfo");
         MAX_LEVEL = 3;
     }
 
-    public FileFinder(String[] args) {
+    public FileScanner(String[] args) {
         this();
-        this.argParser.init(args);
+        //this.flagParser.init(args);
     }
 
     private void printListIf(Boolean condition, ArrayList<String> list) {
@@ -64,14 +64,13 @@ public class FileFinder {
         infoList.add("S@ " + s_time + " E@ " + e_time + " T: " + (double) (e_time - s_time) / 1000. + " sec.");
     }
 
-    public void info() throws IOException {
+    public void getInfo() throws IOException {
         e_time = System.currentTimeMillis();
-
         printListIf(SHOW_FINDINGS, findingList);
         createInfoList();
         printListIf(SHOW_INFO, infoList);
         save(findingList, e_time + ".files");
-        save(infoList, e_time + ".info");
+        save(infoList, e_time + ".getInfo");
 
         if (errors > 0) {
             save(errorsList, e_time + ".err");
