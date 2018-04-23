@@ -4,48 +4,50 @@ import java.util.ArrayList;
 
 public class FlagStorage {
     
-//    private static FlagStorage INSTANCE;
     private ArrayList<Flag> flags;
     
     public FlagStorage() {
         flags = new ArrayList<>();
     }
     
-    public FlagStorage(String[] flagNames) {
+    public FlagStorage(Flag flag) {
         this();
-        for (String flagName : flagNames) {
-            this.add(new Flag(flagName));
+        this.add(flag);
+    }
+    
+    public Flag get(String flagName) {
+        for (Flag flag : flags) {
+            if (flag.getName().equals(flagName)) {
+                flag.change();
+                return flag;
+            }
+        }        
+        return new Flag(flagName);
+    }
+    
+    public FlagStorage(String[] flags) {
+        this();
+        for (String flagName : flags) {
+            add(new Flag(flagName));
         }
     }
     
-//    public static FlagStorage getInstance() {
-//        if (INSTANCE == null) {
-//            INSTANCE = new FlagStorage();
-//        }
-//        return INSTANCE;   
-//    }
-    
-    public void add(Flag flag){
-        for (Flag f : flags) {
-            if (f.getName() != flag.getName()) {
-                flags.add(flag);
-            }
+    public void add(Flag flag) {
+        if (!flags.contains(flag)) {
+            flags.add(flag);
         }
     }
     
-    public Flag get(String name) {
-        for (Flag f : flags) {
-            if (f.getName().equals(name)) {
-                return f;
-            }
-        }
-        return null;
+    public Boolean contains(Flag flag) {
+        return flags.contains(flag);
     }
     
     public void show() {
         for (Flag flag : flags) {
             System.out.println(flag);
         }
+        
+        System.out.println("FlagStorage.flags  isEmpty: " + flags.isEmpty());
     }
     
 }

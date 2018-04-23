@@ -32,6 +32,6 @@ public class FlagParser {
     }
 
     public void add(Flag f) {
-        flags.add(new Flag(arg));
+        flags.add(new Flag());
     }
 }
