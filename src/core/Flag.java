@@ -12,6 +12,11 @@ public class Flag {
     public Flag(String name) {
         this.name = name;
     }
+    
+    public Flag(String name, Boolean state) {
+        this.name = name;
+        this.state = state;
+    }
 
     public boolean isState() {
         return state;
@@ -25,9 +30,13 @@ public class Flag {
         return this.name;
     }
     
+    public void change(){
+        this.state = !this.state;
+    }
+    
     @Override
     public String toString() {
-        return "Flag \"" + this.name + "\" " + this.state;
+        return "Flag \"" + this.name + "\" State " + this.state;
     }
 
 }
