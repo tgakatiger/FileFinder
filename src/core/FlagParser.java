@@ -4,7 +4,7 @@ import java.util.*;
 
 public class FlagParser {
 
-    private ArrayList<String> flags;
+    private ArrayList<Flag> flags;
 
     public FlagParser() {
         flags = new ArrayList<>();
@@ -20,13 +20,13 @@ public class FlagParser {
 
     public void info() {
         System.out.print("Arguments:\n\tFlags: ");
-        for (String arg : flags) {
+        for (Flag arg : flags) {
             System.out.print(arg + " ");
         }
         System.out.println();
     }
 
     public void addFlag(String arg) {
-        flags.add(arg);
+        flags.add(new Flag(arg));
     }
 }

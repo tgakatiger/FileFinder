@@ -9,6 +9,7 @@ public class TestFlagParser {
         System.out.println("Before init:");
         System.out.println(test);
         flagParser.addFlag(args[0]);
+//        Проблема в том что ссылка не меняется
         System.out.println("After init:");
         System.out.println(test);
     }
