@@ -20,9 +20,14 @@ public class Flag {
     public void setState(boolean state) {
         this.state = state;
     }
-
-    public void change() {
-        this.state = !this.state;
+    
+    public String getName() {
+        return this.name;
+    }
+    
+    @Override
+    public String toString() {
+        return "Flag \"" + this.name + "\" " + this.state;
     }
 
 }

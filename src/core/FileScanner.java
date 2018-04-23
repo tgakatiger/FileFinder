@@ -10,6 +10,7 @@ public class FileScanner {
     private boolean SHOW_FINDINGS;
     private boolean SHOW_INFO;
     private boolean SHOW_ERRORS;
+    private boolean SAVE_FILES;
     private int MAX_LEVEL;
 
     private int count;
@@ -40,8 +41,9 @@ public class FileScanner {
         byteTotal = 0;
         SHOW_ERRORS = true;
         SHOW_FINDINGS = false;
-        SHOW_INFO = flagParser.parse("--getInfo");
+        SHOW_INFO = flagParser.parse("--show-info");
         MAX_LEVEL = 3;
+        SAVE_FILES = false;
     }
 
     public FileScanner(String[] args) {
@@ -70,7 +72,7 @@ public class FileScanner {
         createInfoList();
         printListIf(SHOW_INFO, infoList);
         save(findingList, e_time + ".files");
-        save(infoList, e_time + ".getInfo");
+        save(infoList, e_time + ".info");
 
         if (errors > 0) {
             save(errorsList, e_time + ".err");
@@ -79,12 +81,15 @@ public class FileScanner {
     }
 
     private void save(ArrayList<String> list, String filename) throws IOException {
-        try (FileWriter writer = new FileWriter(filename)) {
-            for (String line : list) {
-                writer.write(line + System.getProperty("line.separator"));
+        if (SAVE_FILES) {
+            try (FileWriter writer = new FileWriter(filename)) {
+                for (String line : list) {
+                    writer.write(line + System.getProperty("line.separator"));
+                }
+                System.out.println("Write " + filename + " Done");
             }
-            System.out.println("Write " + filename + " Done");
         }
+
     }
 
     private String whatIs(File name) {

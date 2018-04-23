@@ -11,7 +11,12 @@ public class FlagParser {
     }
 
     public boolean parse(String flag) {
-        return flags.contains(flag);
+        for (Flag f : flags) {
+            if (f.getName().equals(flag)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 //    public void init(String[] args) {
@@ -26,7 +31,7 @@ public class FlagParser {
         System.out.println();
     }
 
-    public void addFlag(String arg) {
+    public void add(Flag f) {
         flags.add(new Flag(arg));
     }
 }
