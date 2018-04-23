@@ -1,3 +1,25 @@
-> scan dir --show-info --show-errors --show-findings --save-file --depth 3
+> scan ./ 
+    --show-info 
+    --show-errors 
+    --show-findings 
+    --save-file 
+    --depth 3
 
-> find --type dir dirname
+> find 
+    --type dir|file|all 
+    --path ./ 
+    --size 50 kb 
+    --time today 
+    --hash 0056ef 
+    --type type 
+    --meta images
+    --duplicates name|hash
+    regexp
+
+=> fileA (path, size, time, hash, type, meta)
+=> fileB (path, size, time, hash, type, meta)
+=> fileC (path, size, time, hash, type, meta)
+=> fileD (path, size, time, hash, type, meta)
+=> fileE (path, size, time, hash, type, meta)
+=> fileF (path, size, time, hash, type, meta)
+
