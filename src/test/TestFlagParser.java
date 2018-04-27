@@ -8,7 +8,7 @@ public class TestFlagParser {
 //        FlagStorage flagStorage = new FlagStorage();
 //        FlagParser flagParser = new FlagParser();
 //        FlagStorage flagStorage = new FlagStorage(args);
-//        flagStorage.show();
+//        flagStorяage.show();
 //        Flag test = new Flag("--test");
 //        flagParser.add(test);
 //        Boolean test = flagParser.parse("--test");
